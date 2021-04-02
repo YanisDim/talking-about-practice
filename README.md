@@ -59,6 +59,12 @@ Catch as many as you can to become the future Star of the team!
 * move(){}
 * throwPass(){}
 
+## ball.js
+* draw(){}
+* move(){}
+* checkCollision(){}
+
+
 ## States y States Transitions
 
 * build a SplashScreen(){}
