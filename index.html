@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+        </style>
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Talkin' About Practice!</title>
+</head>
+<body>
+
+    <!-- Start Page-->
+
+<section id="start-page">
+    <div id = "title-box">
+        <h1>Talkin' About Practice</h1>
+        
+    </div>
+    <div id="instructions-box">
+        <h2>Catch all the passes to earn your coach's trust this season </h2>
+        <p id="instructions"> Move along the baseline using the arrows ◀︎ / ▶︎  </p>
+    </div>
+    <div class="input-container">
+        <label for="name">Name</label>
+        <input type="text" id="name" maxLength="20">
+        <button id="start-btn" class="button">Start Practicing</button>
+       <!--  <a href="https://www.youtube.com/watch?v=3gvmPqCDPPg">
+            <button id="lazy" class= "button">I'm Lazy, let's watch Highlights</button>
+        </a> -->
+    </div>
+</section>
+
+<!--Game Page-->
+
+<section id="game-page">
+    <div id="scoreboard">
+        <h3 id="show-score">Score: <span>0</span></h3>
+    </div>
+    <div id="game-container">
+        <canvas id="myCanvas" width="670" height="800"></canvas>
+    </div>
+</section>
+
+
+<!--Game Over Page-->
+
+<section id="game-over-page">
+    <div id="final-top">
+        <h1>You look tired, the coach sends you to the bench</h1>
+        <h2 id="final-score">Your Score is: <span>0</span> </h2>
+    </div>
+    
+    <div id="final-bottom">
+        <button id="restart" class="button">Try again?</button>
+        <br>
+        <!-- 
+        <iframe src="https://giphy.com/embed/3oEjI105rmEC22CJFK" width="480" height="478" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3oEjI105rmEC22CJFK">via GIPHY</a></p>
+
+        -->
+    </div>
+
+</section>
+
+
+
+
+<!-- Adding the scripts-->
+    <script src="main.js"></script>
+</body>
+</html>
