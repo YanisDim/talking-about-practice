@@ -32,10 +32,13 @@ h1 {
     font-size: 40px;
 }
 
-p #instructions{
-    
-    font-size: 22px;
+h2{
+    font-size: 24px;
+    margin-bottom: 30px;;
+}
 
+p{
+    font-size: 22px;
 }
 
 .input-container{
@@ -53,9 +56,7 @@ input{
     
 }
 
-#input-container label{
-    font-size: 22px;
-}
+
 
 .name{
     justify-self:center ;
@@ -65,4 +66,5 @@ input{
 label {
     display: block;
     margin-bottom: 10px;
+    font-size: 22px;
 }
