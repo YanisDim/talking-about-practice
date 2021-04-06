@@ -11,7 +11,7 @@ let gameOverPage = document.querySelector('#game-over-page')
 //and the buttons selectors
 let startBtn = document.querySelector('#start-btn')
 let restartBtn = document.querySelector('#restart')
-
+let finalscore = document.querySelector('#final-score')
 //-------------------
 //load all images
 
@@ -59,7 +59,7 @@ function passTheBall(){
     let staticBall = new Ball(cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
     ctx.drawImage(ball, staticBall.x , staticBall.y, ballWidth, ballHeight)
     
-    if (myBall.y == userY){
+    if (myBall.y >= userY && myBall.y < userY+10){
         nextBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
         
         
@@ -68,7 +68,7 @@ function passTheBall(){
         ctx.drawImage(ball, nextBall.x , nextBall.y, ballWidth, ballHeight)
         nextBall.y = nextBall.y + nextBall.incrBall
         
-    } if (nextBall.y == userY){
+    } if (nextBall.y >= userY && nextBall.y< userY+10){
         console.log('myBall is creatd')
         myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
     }
@@ -78,26 +78,23 @@ function passTheBall(){
 
     function collision(){
         
-       if (myBall.y == (userY+userHeight) || nextBall.y == (userY+userHeight )){
-            isGameOver = true
+       if (myBall.y >= (userY+220) && myBall.y <= userY+240 || nextBall.y >= (userY+220) && nextBall.y <= userY+240){
+            isGameOver = true 
+            
         } 
-         if (myBall.y == (userY+(ballHeight/2)) && (myBall.x >= userX )&& (myBall.x <= userX+userWidth  ) ){
+        if (myBall.y >= userY+70 && myBall.y<=userY+75 && (myBall.x >= userX )&& (myBall.x <= userX+userWidth  ) ){
             score ++
             
             myBall.y = canvas.height + ballHeight
            
          } 
-         if (nextBall.y == userY+(ballHeight/2) && nextBall.x >userX && nextBall.x < userX+userWidth ){
+         if (nextBall.y >= userY+70 && nextBall.y <=userY+75  && nextBall.x >userX && nextBall.x < userX+userWidth ){
              score++
              nextBall.y = canvas.height + ballHeight
 
          }
-         /*if (myBall.y > canvas.height){
-            
-            myBall.y = myBall.y + myBall.incrBall
-         }if (nextBall.y > canvas.height){
-            nextBall.y = nextBall.y + nextBall.incrBall
-         }*/
+
+         
     }
     
 
@@ -179,6 +176,7 @@ if (isGameOver){
     gameOverPage.style.display = 'block'
     startPage.style.display = 'none'
     gamePage.style.display = 'none'
+    finalscore.textContent = `Your score is: ${score}`
 } else{
     intervalId = requestAnimationFrame(animate)
 }
