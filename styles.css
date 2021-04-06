@@ -30,11 +30,13 @@ h1{
 
 h1 {
     font-size: 40px;
+    text-align: center;
 }
 
 h2{
     font-size: 24px;
     margin-bottom: 30px;;
+    text-align: center;
 }
 
 p{
@@ -67,4 +69,25 @@ label {
     display: block;
     margin-bottom: 10px;
     font-size: 22px;
+}
+
+#coach{
+    
+    margin-right: 50px;
+}
+
+#out{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#final-bottom{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#restart{
+    margin-left: 50px;
 }

@@ -36,7 +36,7 @@ ball.src = './Img/ball.png'
 //---------------------
 //Variables creation
 let userX = 260, userY= canvas.height-270, userIncr= 5, userWidth=150, userHeight = 150
-let cpuX = 260,  cpuWidth = 150, cpuHeight=150, cpuY = 70;
+let cpuX = 260,  cpuWidth = 150, cpuHeight=150, cpuY = 70; 
 let ballHeight = 50, ballWidth = 50
 let isArrowLeft = false, isArrowRight = false;
 let incrX = 5;//increment x position of cpu
@@ -44,8 +44,9 @@ let isGameOver = false;
 let intervalId = 0
 let score = 0
 //let balls = []
-let myBall = new Ball (cpuX, cpuY)
+let myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
 let nextBall = {}
+
 
 
 
@@ -55,23 +56,48 @@ let nextBall = {}
 function passTheBall(){
     ctx.drawImage(ball, myBall.x, myBall.y, ballWidth, ballHeight)
     myBall.y = myBall.y + myBall.incrBall
-    let staticBall = new Ball(cpuX, cpuY)
-    ctx.drawImage(ball, staticBall.x + (cpuWidth/2), staticBall.y+(cpuHeight/2), ballWidth, ballHeight)
-
+    let staticBall = new Ball(cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
+    ctx.drawImage(ball, staticBall.x , staticBall.y, ballWidth, ballHeight)
+    
     if (myBall.y == userY){
-        console.log(myBall.y == userY)
-        nextBall = new Ball (cpuX, cpuY)
+        nextBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
         
         
     
     }if (nextBall.y){
-        ctx.drawImage(ball, nextBall.x, nextBall.y, ballWidth, ballHeight)
+        ctx.drawImage(ball, nextBall.x , nextBall.y, ballWidth, ballHeight)
         nextBall.y = nextBall.y + nextBall.incrBall
         
     } if (nextBall.y == userY){
-        myBall = new Ball (cpuX, cpuY)
+        console.log('myBall is creatd')
+        myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
     }
     //balls.push(new Ball(ball.x, ball.y, ball.incrBall))    
+    }
+
+
+    function collision(){
+        
+       if (myBall.y == (userY+userHeight) || nextBall.y == (userY+userHeight )){
+            isGameOver = true
+        } 
+         if (myBall.y == (userY+(ballHeight/2)) && (myBall.x >= userX )&& (myBall.x <= userX+userWidth  ) ){
+            score ++
+            
+            myBall.y = canvas.height + ballHeight
+           
+         } 
+         if (nextBall.y == userY+(ballHeight/2) && nextBall.x >userX && nextBall.x < userX+userWidth ){
+             score++
+             nextBall.y = canvas.height + ballHeight
+
+         }
+         /*if (myBall.y > canvas.height){
+            
+            myBall.y = myBall.y + myBall.incrBall
+         }if (nextBall.y > canvas.height){
+            nextBall.y = nextBall.y + nextBall.incrBall
+         }*/
     }
     
 
@@ -82,12 +108,10 @@ function start(){
         gamePage.style.display = ''
         draw()
         animate() 
-         
+        
 }
 
-function restart (){
 
-}
 
 function draw(){
 ctx.drawImage(court, 0, 0)
@@ -123,6 +147,7 @@ function animate(){
 ctx.clearRect(0, 0, canvas.width, canvas.height)
 draw()
 passTheBall()
+collision()
 
 //score
 ctx.fillStyle = 'brown'
@@ -151,14 +176,25 @@ if(isArrowLeft && userX > 0){
 //game over condition
 if (isGameOver){
     cancelAnimationFrame(intervalId)
+    gameOverPage.style.display = 'block'
+    startPage.style.display = 'none'
+    gamePage.style.display = 'none'
 } else{
     intervalId = requestAnimationFrame(animate)
 }
 
 
+
 }
 
-
+function restart(){
+    gameOverPage.style.display = 'none'
+    isGameOver = false
+    userX = 260 
+    userY = canvas.height-270
+    score = 0
+    start()
+}
 
 
 
@@ -180,7 +216,8 @@ window.addEventListener('load', ()=>{
     startBtn.addEventListener('click', ()=>{
         start()
     })
-    /*gameOverPage.style.display('click', ()=>{
+    restartBtn.addEventListener('click', ()=>{
         restart()
-    })*/
+    })
+   
 })
