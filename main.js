@@ -52,6 +52,7 @@ let myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
 let nextBall = {}
 let maxEnergy = 5;
 let gatorBottle;
+let gatorWidth = 46;
 
 
 
@@ -142,6 +143,9 @@ function energy(){
     //decreasing energ
     if (maxEnergy <= 5 && maxEnergy > 0 && myBall.y > canvas.height && myBall.y < canvas.height + 5) maxEnergy--
     if (maxEnergy <= 5 && maxEnergy > 0 && nextBall.y > canvas.height && nextBall.y < canvas.height + 5) maxEnergy--
+    if (gatorBottle && userX > gatorBottle.gatorx && userX < (gatorBottle.gatorx + gatorWidth)) maxEnergy++
+    console.log('gatorBottle.gatorx')
+    if (maxEnergy == 0) isGameOver = true
 
     
     
@@ -207,24 +211,24 @@ ctx.font = '24px Kaushan Script'
 ctx.fillText(`Score is : ${score}`, 20, 30)
 ctx.fillText(`Energy Level : ${maxEnergy}`, 20, 60)
 //Right hand side 
-if (cpuX > canvas.width - cpuWidth ){
+if (cpuX > canvas.width - 120 ){
     incrX = -incrX
 }
 
 //Left hand
-if(cpuX < 0){
+if(cpuX + 30 < 0){
     incrX = 5
 }
 cpuX = cpuX + incrX
 
-//game sound
+
 
 
 //animate userPlayer
-if(isArrowRight && userX + userWidth < canvas.width){
+if(isArrowRight && userX + userWidth < canvas.width +40){
     userX = userX + 5
 }
-if(isArrowLeft && userX > 0){
+if(isArrowLeft && userX + 40 > 0){
     userX = userX - 5
 }
 

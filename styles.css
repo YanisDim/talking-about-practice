@@ -97,3 +97,13 @@ label {
 #gif{
     border-radius: 80px;
 }
+
+.radio{
+    display: flex;
+}
+
+.radiolabel{
+    height: 150px;
+    width: 150px;
+}
+
