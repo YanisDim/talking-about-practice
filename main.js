@@ -22,14 +22,6 @@ court.src = './Img/halfcourt.jpg';
 
 let user = new Image();
 //user.src = './Img/player1.png';
-if (document.querySelector('#btn-radio1').checked){
-    user.src = './Img/player1.png'
-   }else if (document.querySelector('#btn-radio2').checked){
-       user.src = './Img/player2.png'
-   }
-   else{
-       user.src='./Img/player3.png'
-   }
 
 
 let cpu = new Image();
@@ -75,7 +67,7 @@ function passTheBall(){
     
     if (myBall.y >= userY && myBall.y < userY+10){
         nextBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
-        maxEnergy --
+        
         
     
     }if (nextBall.y){
@@ -85,7 +77,7 @@ function passTheBall(){
     } if (nextBall.y >= userY && nextBall.y< userY+10){
         console.log('myBall is creatd')
         myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
-        maxEnergy --
+       
     }
     //balls.push(new Ball(ball.x, ball.y, ball.incrBall))    
     }
@@ -128,7 +120,7 @@ function passTheBall(){
 function start(){
     startPage.style.display = 'none'
         gamePage.style.display = ''
-        
+        selectPlayer()
         draw()
         animate() 
         
@@ -138,7 +130,7 @@ function start(){
 function energy(){
     
     // condition. if (score is modulus 5. create new bottle)
-    if (score % 5 == 0 && maxEnergy < 5){
+    if (score % 5 == 0 && maxEnergy < 5 && !gatorBottle){
         console.log('gatorBottle created')
         gatorBottle = new Gator
     }
@@ -147,22 +139,26 @@ function energy(){
     }
 
     
-    /*
-    if (maxEnergy <= 5 && maxEnergy > 0 && myBall.y >= (userY+220) && myBall.y <= userY+240 ){
-        console.log('energy')
-        maxEnergy = maxEnergy -1
-        
-    } else if (maxEnergy <= 5 && maxEnergy > 0 &&  nextBall.y >= (userY+220) && nextBall.y <= userY+240 ){
-        console.log('energy2')
-        maxEnergy = maxEnergy -1
-
-        
-    } */
+    //decreasing energ
+    if (maxEnergy <= 5 && maxEnergy > 0 && myBall.y > canvas.height && myBall.y < canvas.height + 5) maxEnergy--
+    if (maxEnergy <= 5 && maxEnergy > 0 && nextBall.y > canvas.height && nextBall.y < canvas.height + 5) maxEnergy--
 
     
     
     
 
+}
+
+function selectPlayer(){
+    if (document.querySelector('#btn-radio1').checked){
+        user.src = './Img/player1.png'
+       }else if (document.querySelector('#btn-radio2').checked){
+           user.src = './Img/player2.png'
+       }
+       else{
+           user.src='./Img/player3.png'
+       }
+    
 }
 
 
