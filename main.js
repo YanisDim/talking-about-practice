@@ -23,15 +23,18 @@ court.src = './Img/halfcourt.jpg';
 let user = new Image();
 user.src = './Img/player1.png';
 
-
-
 let cpu = new Image();
 cpu.src = './Img/player4.png';
 
 let ball = new Image();
 ball.src = './Img/ball.png'
 
+let gator = new Image();
+gator.src = './Img/gatorade.png'
 
+//ball touch sounds
+let audio = new Audio(src='/sounds/mixkit-catching-a-basketball-ball-2081.wav')
+let audioBounce = new Audio(src='/sounds/mixkit-basketball-ball-hard-hit-2093.wav')
 
 //---------------------
 //Variables creation
@@ -46,6 +49,8 @@ let score = 0
 //let balls = []
 let myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
 let nextBall = {}
+let maxEnergy = 5
+let gatorBottle;
 
 
 
@@ -84,15 +89,22 @@ function passTheBall(){
         } 
         if (myBall.y >= userY+70 && myBall.y<=userY+75 && (myBall.x >= userX )&& (myBall.x <= userX+userWidth  ) ){
             score ++
+            audio.play()
             
             myBall.y = canvas.height + ballHeight
            
          } 
          if (nextBall.y >= userY+70 && nextBall.y <=userY+75  && nextBall.x >userX && nextBall.x < userX+userWidth ){
              score++
+             audio.play()
              nextBall.y = canvas.height + ballHeight
 
          }
+         //if (myBall.y >= cpuY+50 && myBall.y<=cpuY+100 || nextBall.y >= cpuY+50 && nextBall.y <=cpuY+100){
+           //audioBounce.play()
+        
+        //}
+         
 
          
     }
@@ -106,6 +118,25 @@ function start(){
         draw()
         animate() 
         
+        
+}
+
+function energy(){
+    
+    // condition. if (score is modulus 5. create new bottle)
+    if (score % 5 == 0){
+        gatorBottle = new Gator
+        if (gatorBottle) {
+        ctx.drawImage(gator,gatorBottle.gatorx, gatorBottle.gatory)
+
+    }
+    }
+    
+
+    
+    
+    
+
 }
 
 
@@ -143,10 +174,11 @@ function animate(){
 //auto animation cpu
 ctx.clearRect(0, 0, canvas.width, canvas.height)
 draw()
+
 passTheBall()
 collision()
+energy()
 
-//score
 ctx.fillStyle = 'brown'
 ctx.font = '24px Kaushan Script'
 ctx.fillText(`Score is : ${score}`, 20, 30)
@@ -160,6 +192,8 @@ if(cpuX < 0){
     incrX = 5
 }
 cpuX = cpuX + incrX
+
+//game sound
 
 
 //animate userPlayer
@@ -191,6 +225,7 @@ function restart(){
     userX = 260 
     userY = canvas.height-270
     score = 0
+    maxEnergy = 5
     start()
 }
 

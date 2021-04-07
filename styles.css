@@ -85,9 +85,15 @@ label {
 #final-bottom{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 40px;
+    
 }
 
 #restart{
     margin-left: 50px;
+}
+
+#gif{
+    border-radius: 80px;
 }
