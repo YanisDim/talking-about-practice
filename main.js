@@ -21,7 +21,16 @@ court.src = './Img/halfcourt.jpg';
 
 
 let user = new Image();
-user.src = './Img/player1.png';
+//user.src = './Img/player1.png';
+if (document.querySelector('#btn-radio1').checked){
+    user.src = './Img/player1.png'
+   }else if (document.querySelector('#btn-radio2').checked){
+       user.src = './Img/player2.png'
+   }
+   else{
+       user.src='./Img/player3.png'
+   }
+
 
 let cpu = new Image();
 cpu.src = './Img/player4.png';
@@ -119,6 +128,7 @@ function passTheBall(){
 function start(){
     startPage.style.display = 'none'
         gamePage.style.display = ''
+        
         draw()
         animate() 
         
@@ -160,6 +170,7 @@ function energy(){
 function draw(){
 ctx.drawImage(court, 0, 0)
     //adding user player
+    
 ctx.drawImage(user, userX, userY, userWidth, userHeight)//530 moving line
 //adding computer player
 ctx.drawImage(cpu, cpuX, cpuY, cpuWidth, cpuHeight) //70 moving line
