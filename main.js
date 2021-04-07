@@ -49,7 +49,7 @@ let score = 0
 //let balls = []
 let myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
 let nextBall = {}
-let maxEnergy = 5
+let maxEnergy = 5;
 let gatorBottle;
 
 
@@ -66,7 +66,7 @@ function passTheBall(){
     
     if (myBall.y >= userY && myBall.y < userY+10){
         nextBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
-        
+        maxEnergy --
         
     
     }if (nextBall.y){
@@ -76,6 +76,7 @@ function passTheBall(){
     } if (nextBall.y >= userY && nextBall.y< userY+10){
         console.log('myBall is creatd')
         myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
+        maxEnergy --
     }
     //balls.push(new Ball(ball.x, ball.y, ball.incrBall))    
     }
@@ -83,10 +84,11 @@ function passTheBall(){
 
     function collision(){
         
-       if (myBall.y >= (userY+220) && myBall.y <= userY+240 || nextBall.y >= (userY+220) && nextBall.y <= userY+240){
+        //this collision is for gamover when both balls touch the baseline
+       /*if (myBall.y >= (userY+220) && myBall.y <= userY+240 || nextBall.y >= (userY+220) && nextBall.y <= userY+240 ){
             isGameOver = true 
             
-        } 
+        }*/ 
         if (myBall.y >= userY+70 && myBall.y<=userY+75 && (myBall.x >= userX )&& (myBall.x <= userX+userWidth  ) ){
             score ++
             audio.play()
@@ -100,11 +102,13 @@ function passTheBall(){
              nextBall.y = canvas.height + ballHeight
 
          }
+
+
          //if (myBall.y >= cpuY+50 && myBall.y<=cpuY+100 || nextBall.y >= cpuY+50 && nextBall.y <=cpuY+100){
            //audioBounce.play()
         
         //}
-         
+        
 
          
     }
@@ -124,14 +128,26 @@ function start(){
 function energy(){
     
     // condition. if (score is modulus 5. create new bottle)
-    if (score % 5 == 0){
+    if (score % 5 == 0 && maxEnergy < 5){
+        console.log('gatorBottle created')
         gatorBottle = new Gator
-        if (gatorBottle) {
+    }
+    if (gatorBottle) {
         ctx.drawImage(gator,gatorBottle.gatorx, gatorBottle.gatory)
+    }
 
-    }
-    }
     
+    /*
+    if (maxEnergy <= 5 && maxEnergy > 0 && myBall.y >= (userY+220) && myBall.y <= userY+240 ){
+        console.log('energy')
+        maxEnergy = maxEnergy -1
+        
+    } else if (maxEnergy <= 5 && maxEnergy > 0 &&  nextBall.y >= (userY+220) && nextBall.y <= userY+240 ){
+        console.log('energy2')
+        maxEnergy = maxEnergy -1
+
+        
+    } */
 
     
     
@@ -174,14 +190,15 @@ function animate(){
 //auto animation cpu
 ctx.clearRect(0, 0, canvas.width, canvas.height)
 draw()
-
+energy()
 passTheBall()
 collision()
-energy()
+
 
 ctx.fillStyle = 'brown'
 ctx.font = '24px Kaushan Script'
 ctx.fillText(`Score is : ${score}`, 20, 30)
+ctx.fillText(`Energy Level : ${maxEnergy}`, 20, 60)
 //Right hand side 
 if (cpuX > canvas.width - cpuWidth ){
     incrX = -incrX
