@@ -188,7 +188,7 @@ function selectPlayer(){
        else if (document.querySelector('#btn-radio3').checked){
            user.src='./Img/player3.png'
        } else{
-           user.src = './Img/Marvel characters/deady.png'
+           user.src = '/Img/Marvel characters/deady.png'
        }
     
 }
