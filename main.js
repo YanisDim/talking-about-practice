@@ -36,6 +36,8 @@ gator.src = './Img/gatorade.png'
 //ball touch sounds
 let audio = new Audio(src='/sounds/mixkit-catching-a-basketball-ball-2081.wav')
 let audioBounce = new Audio(src='/sounds/mixkit-basketball-ball-hard-hit-2093.wav')
+let audioMainPage = new Audio (src='./sounds/Alan Parsons Project - eye in sky - 01 - Sirius.mp3')
+let audioGameOver = new Audio ('/sounds/Full Crate - Pump Up The Jam [Remix].mp3')
 
 //---------------------
 //Variables creation
@@ -120,6 +122,7 @@ function passTheBall(){
 //add background
 function start(){
     startPage.style.display = 'none'
+    audioMainPage.pause()
         gamePage.style.display = ''
         selectPlayer()
         draw()
@@ -244,6 +247,7 @@ if(isArrowLeft && userX + 40 > 0){
 if (isGameOver){
     cancelAnimationFrame(intervalId)
     gameOverPage.style.display = 'block'
+    audioGameOver.play()
     startPage.style.display = 'none'
     gamePage.style.display = 'none'
     finalscore.textContent = `Your score is: ${score}`
@@ -257,6 +261,7 @@ if (isGameOver){
 
 function restart(){
     gameOverPage.style.display = 'none'
+    audioGameOver.pause()
     isGameOver = false
     userX = 260 
     userY = canvas.height-270
@@ -280,6 +285,7 @@ function restart(){
 
 window.addEventListener('load', ()=>{
     startPage.style.display = 'block'
+    audioMainPage.play()
     gamePage.style.display = 'none'
     gameOverPage.style.display = 'none'
     startBtn.addEventListener('click', ()=>{
