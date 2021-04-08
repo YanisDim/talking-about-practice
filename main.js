@@ -97,17 +97,13 @@ function passTheBall(){
         myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
        
     }
-    //balls.push(new Ball(ball.x, ball.y, ball.incrBall))    
+      
     }
 
 
     function collision(){
         
-        //this collision is for gamover when both balls touch the baseline
-       /*if (myBall.y >= (userY+220) && myBall.y <= userY+240 || nextBall.y >= (userY+220) && nextBall.y <= userY+240 ){
-            isGameOver = true 
-            
-        }*/ 
+        
         if (myBall.y >= userY+70 && myBall.y<=userY+75 && (myBall.x >= userX )&& (myBall.x <= userX+userWidth  ) ){
             score ++
             audio.play()
@@ -193,6 +189,16 @@ function selectPlayer(){
     
 }
 
+
+function draw(){
+ctx.drawImage(court, 0, 0)
+    //adding user player
+    
+ctx.drawImage(user, userX, userY, userWidth, userHeight)//530 moving line
+//adding computer player
+ctx.drawImage(cpu, cpuX, cpuY, cpuWidth, cpuHeight) //70 moving line
+
+}
 function marvelTransformation(){
     if (score > 40)user.src = ('/Img/ironman.png')
     if (score > 60) user.src = ('/Img/spiderman.png')
@@ -206,18 +212,6 @@ function marvelTransformation(){
     if (score > 300) user.src= ('/Img/deady.png')
     if (score > 320) user.src = ('/Img/jordan.png')
     if (score > 400) user.src = ('/Img/goat.png')
-}
-
-
-
-function draw(){
-ctx.drawImage(court, 0, 0)
-    //adding user player
-    
-ctx.drawImage(user, userX, userY, userWidth, userHeight)//530 moving line
-//adding computer player
-ctx.drawImage(cpu, cpuX, cpuY, cpuWidth, cpuHeight) //70 moving line
-
 }
 
 
