@@ -199,6 +199,7 @@ ctx.drawImage(user, userX, userY, userWidth, userHeight)//530 moving line
 ctx.drawImage(cpu, cpuX, cpuY, cpuWidth, cpuHeight) //70 moving line
 
 }
+/*
 function marvelTransformation(){
     if (score > 40)user.src = ('/Img/ironman.png')
     if (score > 60) user.src = ('/Img/spiderman.png')
@@ -213,7 +214,7 @@ function marvelTransformation(){
     if (score > 320) user.src = ('/Img/jordan.png')
     if (score > 400) user.src = ('/Img/goat.png')
 }
-
+*/
 
 //Keyboard use
 document.addEventListener('keydown', (event)=>{
@@ -241,7 +242,7 @@ draw()
 energy()
 passTheBall()
 collision()
-marvelTransformation()
+//marvelTransformation()
 
 
 ctx.fillStyle = 'brown'
