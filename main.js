@@ -41,6 +41,7 @@ let audioBounce = new Audio()
 audioBounce.src= './sounds/mixkit-basketball-ball-hard-hit-2093.wav'
 let audioMainPage = new Audio ()
 audioMainPage.src = './sounds/Alan Parsons Project - eye in sky - 01 - Sirius.mp3'
+audioMainPage.volume = 0.1
 let audioGameOver = new Audio ()
 audioGameOver.src = './sounds/Full Crate - Pump Up The Jam [Remix].mp3'
 audioGameOver.volume= 0.1
@@ -60,9 +61,12 @@ let score = 0
 //let balls = []
 let myBall = new Ball (cpuX+(cpuWidth/2), cpuY+(cpuHeight/2))
 let nextBall = {}
+
+//energy variables
 let maxEnergy = 5;
 let gatorBottle;
 let gatorWidth = 46;
+let bottleScore = 5;
 
 
 
@@ -142,7 +146,7 @@ function start(){
 function energy(){
     
     // condition. if (score is modulus 5. create new bottle)
-    if (score % 3 == 0 && maxEnergy < 5 && !gatorBottle){
+    if (score >= bottleScore && maxEnergy < 5 && !gatorBottle){
         console.log('gatorBottle created')
         gatorBottle = new Gator
     }
@@ -151,16 +155,16 @@ function energy(){
     }
 
     
-    //decreasing energ
+    //decreasing energy
     if (maxEnergy <= 5 && maxEnergy > 0 && myBall.y > canvas.height && myBall.y < canvas.height + 10) maxEnergy--
     if (maxEnergy <= 5 && maxEnergy > 0 && nextBall.y > canvas.height && nextBall.y < canvas.height + 10) maxEnergy--
+    //catching the bottle increase energy
     if (gatorBottle && maxEnergy < 5 && (userX+userWidth/2) >= gatorBottle.gatorx && (userX+userWidth/2) <= (gatorBottle.gatorx + gatorWidth)) {
             maxEnergy++
             audioSip.play()
-            gatorBottle.gatorx = canvas + 100
-            if (gatorBottle && score % 5 == 0 && gatorBottle.gatorx == canvas ){
-                gatorBottle.gatorx = gatorBottle.gatorx
-            }
+            gatorBottle = null
+            bottleScore = score + 5
+            
             
         }
         
@@ -295,7 +299,7 @@ function restart(){
 
 window.addEventListener('load', ()=>{
     startPage.style.display = 'block'
-    //audioMainPage.play()
+    audioMainPage.play()
     gamePage.style.display = 'none'
     gameOverPage.style.display = 'none'
     startBtn.addEventListener('click', ()=>{
