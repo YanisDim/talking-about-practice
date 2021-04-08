@@ -131,7 +131,7 @@ function start(){
 function energy(){
     
     // condition. if (score is modulus 5. create new bottle)
-    if (score % 5 == 0 && maxEnergy < 5 && !gatorBottle){
+    if (score % 3 == 0 && maxEnergy < 5 && !gatorBottle){
         console.log('gatorBottle created')
         gatorBottle = new Gator
     }
@@ -141,10 +141,18 @@ function energy(){
 
     
     //decreasing energ
-    if (maxEnergy <= 5 && maxEnergy > 0 && myBall.y > canvas.height && myBall.y < canvas.height + 5) maxEnergy--
-    if (maxEnergy <= 5 && maxEnergy > 0 && nextBall.y > canvas.height && nextBall.y < canvas.height + 5) maxEnergy--
-    if (gatorBottle && userX > gatorBottle.gatorx && userX < (gatorBottle.gatorx + gatorWidth)) maxEnergy++
-    console.log('gatorBottle.gatorx')
+    if (maxEnergy <= 5 && maxEnergy > 0 && myBall.y > canvas.height && myBall.y < canvas.height + 10) maxEnergy--
+    if (maxEnergy <= 5 && maxEnergy > 0 && nextBall.y > canvas.height && nextBall.y < canvas.height + 10) maxEnergy--
+    if (gatorBottle && maxEnergy < 5 && (userX+userWidth/2) >= gatorBottle.gatorx && (userX+userWidth/2) <= (gatorBottle.gatorx + gatorWidth)) {
+            maxEnergy++
+            gatorBottle.gatorx = canvas + 100
+            if (score % 5 == 0 && gatorBottle.gatorx == canvas + 100 ){
+                gatorBottle.gatorx = gatorBottle.gatorx
+            }
+        }
+        
+
+    
     if (maxEnergy == 0) isGameOver = true
 
     

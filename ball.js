@@ -2,7 +2,7 @@ class Ball{
     constructor(x, y, incrBall ){
         this.x = x;
         this.y = y;
-        this.incrBall = 4;
+        this.incrBall = 6;
         
     }
 }
