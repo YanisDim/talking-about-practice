@@ -34,10 +34,11 @@ let gator = new Image();
 gator.src = './Img/gatorade.png'
 
 //ball touch sounds
-let audio = new Audio(src='/sounds/mixkit-catching-a-basketball-ball-2081.wav')
-let audioBounce = new Audio(src='/sounds/mixkit-basketball-ball-hard-hit-2093.wav')
-let audioMainPage = new Audio (src='./sounds/Alan Parsons Project - eye in sky - 01 - Sirius.mp3')
-let audioGameOver = new Audio ('/sounds/Full Crate - Pump Up The Jam [Remix].mp3')
+let audio = new Audio(src='sounds/mixkit-catching-a-basketball-ball-2081.wav')
+let audioBounce = new Audio(src='sounds/mixkit-basketball-ball-hard-hit-2093.wav')
+let audioMainPage = new Audio (src='sounds/Alan Parsons Project - eye in sky - 01 - Sirius.mp3')
+let audioGameOver = new Audio (src='sounds/Full Crate - Pump Up The Jam [Remix].mp3')
+let audioSip = new Audio (src='sounds/152363__cogitoandcradle__the-sound-someone-makes-after-take-n-a-drink-of-delicious-milk.wav')
 
 //---------------------
 //Variables creation
@@ -148,10 +149,12 @@ function energy(){
     if (maxEnergy <= 5 && maxEnergy > 0 && nextBall.y > canvas.height && nextBall.y < canvas.height + 10) maxEnergy--
     if (gatorBottle && maxEnergy < 5 && (userX+userWidth/2) >= gatorBottle.gatorx && (userX+userWidth/2) <= (gatorBottle.gatorx + gatorWidth)) {
             maxEnergy++
+            audioSip.play()
             gatorBottle.gatorx = canvas + 100
-            if (score % 5 == 0 && gatorBottle.gatorx == canvas + 100 ){
+            if (gatorBottle && score % 5 == 0 && gatorBottle.gatorx == canvas ){
                 gatorBottle.gatorx = gatorBottle.gatorx
             }
+            
         }
         
 
