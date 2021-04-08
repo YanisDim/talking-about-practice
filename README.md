@@ -1,5 +1,5 @@
 # Talkin' About Practice! 
-[Link Deploy](http://github.com)
+https://yanisdim.github.io/talking-about-practice/
 
 
 ## Description
