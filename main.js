@@ -33,6 +33,9 @@ ball.src = './Img/ball.png'
 let gator = new Image();
 gator.src = './Img/gatorade.png'
 
+let deady = new Image();
+deady.src = './Img/deady.png'
+
 //ball touch sounds
 let audio = new Audio()
 audio.src = './sounds/mixkit-catching-a-basketball-ball-2081.wav'
@@ -184,8 +187,10 @@ function selectPlayer(){
        }else if (document.querySelector('#btn-radio2').checked){
            user.src = './Img/player2.png'
        }
-       else{
+       else if (document.querySelector('#btn-radio3').checked){
            user.src='./Img/player3.png'
+       } else{
+           user.src = './Img/deady.png'
        }
     
 }

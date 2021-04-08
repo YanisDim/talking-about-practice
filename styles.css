@@ -108,3 +108,8 @@ label {
     width: 150px;
 }
 
+#game-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
