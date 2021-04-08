@@ -34,11 +34,18 @@ let gator = new Image();
 gator.src = './Img/gatorade.png'
 
 //ball touch sounds
-let audio = new Audio(src='sounds/mixkit-catching-a-basketball-ball-2081.wav')
-let audioBounce = new Audio(src='sounds/mixkit-basketball-ball-hard-hit-2093.wav')
-let audioMainPage = new Audio (src='sounds/Alan Parsons Project - eye in sky - 01 - Sirius.mp3')
-let audioGameOver = new Audio (src='sounds/Full Crate - Pump Up The Jam [Remix].mp3')
-let audioSip = new Audio (src='sounds/152363__cogitoandcradle__the-sound-someone-makes-after-take-n-a-drink-of-delicious-milk.wav')
+let audio = new Audio()
+audio.src = './sounds/mixkit-catching-a-basketball-ball-2081.wav'
+
+let audioBounce = new Audio()
+audioBounce.src= './sounds/mixkit-basketball-ball-hard-hit-2093.wav'
+let audioMainPage = new Audio ()
+audioMainPage.src = './sounds/Alan Parsons Project - eye in sky - 01 - Sirius.mp3'
+let audioGameOver = new Audio ()
+audioGameOver.src = './sounds/Full Crate - Pump Up The Jam [Remix].mp3'
+audioGameOver.volume= 0.1
+let audioSip = new Audio ()
+audioSip.src= './sounds/152363__cogitoandcradle__the-sound-someone-makes-after-take-n-a-drink-of-delicious-milk.wav'
 
 //---------------------
 //Variables creation
@@ -288,7 +295,7 @@ function restart(){
 
 window.addEventListener('load', ()=>{
     startPage.style.display = 'block'
-    audioMainPage.play()
+    //audioMainPage.play()
     gamePage.style.display = 'none'
     gameOverPage.style.display = 'none'
     startBtn.addEventListener('click', ()=>{
