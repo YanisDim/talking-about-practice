@@ -122,15 +122,13 @@ function passTheBall(){
 
          }
 
-
-         //if (myBall.y >= cpuY+50 && myBall.y<=cpuY+100 || nextBall.y >= cpuY+50 && nextBall.y <=cpuY+100){
-           //audioBounce.play()
-        
-        //}
+            
         
 
          
     }
+
+    
     
 
 
@@ -190,7 +188,7 @@ function selectPlayer(){
        else if (document.querySelector('#btn-radio3').checked){
            user.src='./Img/player3.png'
        } else{
-           user.src = './Img/deady.png'
+           user.src = './Img/Marvel characters/deady.png'
        }
     
 }
@@ -234,6 +232,7 @@ draw()
 energy()
 passTheBall()
 collision()
+marvelTransformation()
 
 
 ctx.fillStyle = 'brown'
