@@ -183,9 +183,9 @@ function selectPlayer(){
        }
        else if (document.querySelector('#btn-radio3').checked){
            user.src='./Img/player3.png'
-       } else{
+       } /*else{
            user.src = '/Img/deady.png'
-       }
+       }*/
     
 }
 
