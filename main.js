@@ -152,39 +152,30 @@ function draw(){
 }
 
 function marvelTransformation(){
-    if (score > 25){
-        user.src = './Img/ironman.png'
-    }
-    if (score > 50){
-        user.src = './Img/spiderman.png'
-    }
-    if (score > 75){
-        user.src = './Img/storm.png'
-    } 
-    if (score > 100){
-        user.src = './Img/wolvy.png'
-    }
-    if (score > 125){
-        user.src = './Img/blackpanther.png'
-    } 
-    if (score > 150){
-        user.src = './Img/blackwidow.png'
-    } 
-    if (score > 175){
-        user.src = './Img/captainamerica.png'
-    } 
-    if (score > 200){
-        user.src = './Img/captainmarvel.png'
-    } 
-    if (score > 225){
-        user.src = './Img/hulk.png'
-    } 
-    if (score > 250){
-        user.src = './Img/jordan.png'
-    } 
     if (score > 275){
         user.src = './Img/goat.png'
-    } 
+    } else if (score > 250){
+        user.src = './Img/jordan.png'
+    } else if (score > 225){
+        user.src = './Img/hulk.png'
+    } else if (score > 200){
+        user.src = './Img/captainmarvel.png'
+    } else if (score > 175){
+        user.src = './Img/captainamerica.png'
+    } else if (score > 150){
+        user.src = './Img/blackwidow.png'
+    } else if (score > 125){
+        user.src = './Img/blackpanther.png'
+    } else if (score > 100){
+        user.src = './Img/wolvy.png'
+    } else if (score > 75){
+        user.src = './Img/storm.png'
+    } else if (score > 50){
+        user.src = './Img/spiderman.png'
+    } else if (score > 25){
+        user.src = './Img/ironman.png'
+    }
+    
 }
 
 //Keyboard use
