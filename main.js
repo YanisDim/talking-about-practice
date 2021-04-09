@@ -37,6 +37,9 @@ audioSip.src= './sounds/152363__cogitoandcradle__the-sound-someone-makes-after-t
 let audioBuzzer = new Audio ()
 audioBuzzer.src= './sounds/buzzer.wav'
 audioBuzzer.volume = 0.1
+let teammateApplause = new Audio ()
+teammateApplause.src= './sounds/teammateaplause.wav'
+teammateApplause.volume = 0.1
 //Variables creation
 let userX = 260, userY= canvas.height-270, userIncr= 5, userWidth=150, userHeight = 150 //User is our character
 let cpuX = 260,  cpuWidth = 150, cpuHeight=150, cpuY = 70; //CPU is the compputer player
@@ -79,7 +82,7 @@ function collision(){
             audio.play()
             myBall.y = canvas.height + ballHeight
          } 
-         if (nextBall.y >= userY+70 && nextBall.y <=userY+75  && nextBall.x >userX && nextBall.x < userX+userWidth ){
+    if (nextBall.y >= userY+70 && nextBall.y <=userY+75  && nextBall.x >userX && nextBall.x < userX+userWidth ){
              score++
              audio.play()
              nextBall.y = canvas.height + ballHeight
@@ -124,6 +127,7 @@ function energyTracking(){
 //Game Winning condition
     if (score == 300){
         audioGame.pause()
+        teammateApplause.play()
         isGameWin = true
     }
 }
