@@ -234,7 +234,6 @@ document.addEventListener('keyup', (event)=>{
 
 
 function animate(){
-//auto animation cpu
 ctx.clearRect(0, 0, canvas.width, canvas.height)
 draw()
 energy()
