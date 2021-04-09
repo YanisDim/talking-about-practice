@@ -43,6 +43,7 @@ let cpuX = 260,  cpuWidth = 150, cpuHeight=150, cpuY = 70; //CPU is the comppute
 let ballHeight = 50, ballWidth = 50
 let isArrowLeft = false, isArrowRight = false;
 let incrX = 5;
+let isGameWin = false;
 let isGameOver = false;
 let intervalId = 0
 let score = 0
@@ -82,7 +83,7 @@ function collision(){
              score++
              audio.play()
              nextBall.y = canvas.height + ballHeight
-         }    
+         }
     }
 
 //start function displaying the game page
@@ -119,7 +120,12 @@ function energyTracking(){
         audioGame.pause()
         audioBuzzer.play()
         isGameOver = true
-    } 
+    }
+//Game Winning condition
+    if (score == 300){
+        audioGame.pause()
+        isGameWin = true
+    }
 }
 
 function selectPlayer(){
@@ -222,20 +228,29 @@ function animate(){
     }
 
 //game over setup
-if (isGameOver){
-    cancelAnimationFrame(intervalId)
-    gameOverPage.style.display = 'block'
-    startPage.style.display = 'none'
-    gamePage.style.display = 'none'
-    finalscore.textContent = `Your score is: ${score}`
-} else{
-    intervalId = requestAnimationFrame(animate)
-}
+    if (isGameOver){
+        cancelAnimationFrame(intervalId)
+        gameOverPage.style.display = 'block'
+        startPage.style.display = 'none'
+        gamePage.style.display = 'none'
+        gameWinningPage.style.display = 'none'
+        finalscore.textContent = `Your score is: ${score}`
+    } else if (isGameWin){
+        cancelAnimationFrame(intervalId)
+        gameWinningPage.style.display = 'block'
+        startPage.style.display = 'none'
+        gamePage.style.display = 'none'
+        gameOverPage.style.display= 'none'
+    } else{
+        intervalId = requestAnimationFrame(animate)
+    }
 }
 
 function restart(){
     gameOverPage.style.display = 'none'
     isGameOver = false
+    gameWinningPage.style.display='none'
+    isGameWin = false
     userX = 260 
     userY = canvas.height-270
     score = 0
@@ -248,6 +263,7 @@ window.addEventListener('load', ()=>{
     audioMainPage.play()
     gamePage.style.display = 'none'
     gameOverPage.style.display = 'none'
+    gameWinningPage.style.display = 'none'
     startBtn.addEventListener('click', ()=>{
         start()
     })
