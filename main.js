@@ -6,6 +6,7 @@ canvas.style.border = '5px solid white';
 let startPage = document.querySelector('#start-page')
 let gamePage = document.querySelector('#game-page')
 let gameOverPage = document.querySelector('#game-over-page')
+let gameWinningPage = document.querySelector('#game-winning-page')
 //and the buttons selectors
 let startBtn = document.querySelector('#start-btn')
 let restartBtn = document.querySelector('#restart')
@@ -28,11 +29,14 @@ audioBounce.src= './sounds/mixkit-basketball-ball-hard-hit-2093.wav'
 let audioMainPage = new Audio ()
 audioMainPage.src = './sounds/Alan Parsons Project - eye in sky - 01 - Sirius.mp3'
 audioMainPage.volume = 0.1
-let audioGameOver = new Audio ()
-audioGameOver.src = './sounds/Full Crate - Pump Up The Jam [Remix].mp3'
-audioGameOver.volume= 0.1
+let audioGame = new Audio ()
+audioGame.src = './sounds/Full Crate - Pump Up The Jam [Remix].mp3'
+audioGame.volume= 0.1
 let audioSip = new Audio ()
 audioSip.src= './sounds/152363__cogitoandcradle__the-sound-someone-makes-after-take-n-a-drink-of-delicious-milk.wav'
+let audioBuzzer = new Audio ()
+audioBuzzer.src= './sounds/buzzer.wav'
+audioBuzzer.volume = 0.1
 //Variables creation
 let userX = 260, userY= canvas.height-270, userIncr= 5, userWidth=150, userHeight = 150 //User is our character
 let cpuX = 260,  cpuWidth = 150, cpuHeight=150, cpuY = 70; //CPU is the compputer player
@@ -85,6 +89,7 @@ function collision(){
 function start(){
     startPage.style.display = 'none'
     audioMainPage.pause()
+    audioGame.play()
     gamePage.style.display = ''
     selectPlayer()
     draw()
@@ -110,7 +115,11 @@ function energyTracking(){
             bottleScore = score + 5
         }
 //GameOverCondition
-    if (maxEnergy == 0) isGameOver = true
+    if (maxEnergy == 0){
+        audioGame.pause()
+        audioBuzzer.play()
+        isGameOver = true
+    } 
 }
 
 function selectPlayer(){
@@ -216,7 +225,6 @@ function animate(){
 if (isGameOver){
     cancelAnimationFrame(intervalId)
     gameOverPage.style.display = 'block'
-    audioGameOver.play()
     startPage.style.display = 'none'
     gamePage.style.display = 'none'
     finalscore.textContent = `Your score is: ${score}`
@@ -227,7 +235,6 @@ if (isGameOver){
 
 function restart(){
     gameOverPage.style.display = 'none'
-    audioGameOver.pause()
     isGameOver = false
     userX = 260 
     userY = canvas.height-270

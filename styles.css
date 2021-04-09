@@ -113,3 +113,13 @@ label {
     justify-content: center;
     align-items: center;
 }
+
+#win-top{
+    display: block;
+}
+
+#goat{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
