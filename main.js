@@ -21,7 +21,7 @@ court.src = './Img/halfcourt.jpg';
 
 
 let user = new Image();
-//user.src = './Img/player1.png';
+
 
 
 let cpu = new Image();
@@ -33,8 +33,7 @@ ball.src = './Img/ball.png'
 let gator = new Image();
 gator.src = './Img/gatorade.png'
 
-//let deady = new Image();
-//deady.src = './Img/deady.png'
+
 
 //ball touch sounds
 let audio = new Audio()
@@ -144,7 +143,6 @@ function energy(){
     
     // condition. if (score is modulus 5. create new bottle)
     if (score >= bottleScore && maxEnergy < 5 && !gatorBottle){
-        console.log('gatorBottle created')
         gatorBottle = new Gator
     }
     if (gatorBottle) {
@@ -183,9 +181,9 @@ function selectPlayer(){
        }
        else if (document.querySelector('#btn-radio3').checked){
            user.src='./Img/player3.png'
-       } /*else{
-           user.src = '/Img/deady.png'
-       }*/
+       } else{
+           user.src='./Img/deady.png'
+       }
     
 }
 
