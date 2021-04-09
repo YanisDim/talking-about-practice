@@ -197,22 +197,21 @@ ctx.drawImage(user, userX, userY, userWidth, userHeight)//530 moving line
 ctx.drawImage(cpu, cpuX, cpuY, cpuWidth, cpuHeight) //70 moving line
 
 }
-/*
+
 function marvelTransformation(){
-    if (score > 40)user.src = ('/Img/ironman.png')
-    if (score > 60) user.src = ('/Img/spiderman.png')
-    if (score > 80) user.src = ('/Img/storm.png')
-    if (score > 100) user.src = ('/Img/wolvy.png')
-    if (score > 120) user.src = ('/Img/blackpanther.png')
-    if (score > 140) user.src = ('/Img/blackwidow.png')
-    if (score > 180) user.src = ('/Img/captainamerica.png')
-    if (score > 220) user.src = ('/Img/captainmarvel.png')
-    if (score > 260) user.src = ('/Img/hulk.png')
-    if (score > 300) user.src= ('/Img/deady.png')
-    if (score > 320) user.src = ('/Img/jordan.png')
-    if (score > 400) user.src = ('/Img/goat.png')
+    if (score > 40)user.src = ('./Img/ironman.png')
+    if (score > 60) user.src = ('./Img/spiderman.png')
+    if (score > 80) user.src = ('./Img/storm.png')
+    if (score > 100) user.src = ('./Img/wolvy.png')
+    if (score > 120) user.src = ('./Img/blackpanther.png')
+    if (score > 140) user.src = ('./Img/blackwidow.png')
+    if (score > 180) user.src = ('./Img/captainamerica.png')
+    if (score > 220) user.src = ('./Img/captainmarvel.png')
+    if (score > 260) user.src = ('./Img/hulk.png')
+    if (score > 300) user.src = ('./Img/jordan.png')
+    if (score > 340) user.src = ('./Img/goat.png')
 }
-*/
+
 
 //Keyboard use
 document.addEventListener('keydown', (event)=>{
@@ -239,7 +238,7 @@ draw()
 energy()
 passTheBall()
 collision()
-//marvelTransformation()
+marvelTransformation()
 
 
 ctx.fillStyle = 'brown'
