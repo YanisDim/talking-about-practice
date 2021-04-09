@@ -199,17 +199,39 @@ ctx.drawImage(cpu, cpuX, cpuY, cpuWidth, cpuHeight) //70 moving line
 }
 
 function marvelTransformation(){
-    if (score > 40)user.src = ('./Img/ironman.png')
-    if (score > 60) user.src = ('./Img/spiderman.png')
-    if (score > 80) user.src = ('./Img/storm.png')
-    if (score > 100) user.src = ('./Img/wolvy.png')
-    if (score > 120) user.src = ('./Img/blackpanther.png')
-    if (score > 140) user.src = ('./Img/blackwidow.png')
-    if (score > 180) user.src = ('./Img/captainamerica.png')
-    if (score > 220) user.src = ('./Img/captainmarvel.png')
-    if (score > 260) user.src = ('./Img/hulk.png')
-    if (score > 300) user.src = ('./Img/jordan.png')
-    if (score > 340) user.src = ('./Img/goat.png')
+    if (score > 25){
+        user.src = ('./Img/ironman.png')
+    }
+    if (score > 50){
+        user.src = ('./Img/spiderman.png')
+    }
+    if (score > 75){
+        user.src = ('./Img/storm.png')
+    } 
+    if (score > 100){
+        user.src = ('./Img/wolvy.png')
+    }
+    if (score > 125){
+        user.src = ('./Img/blackpanther.png')
+    } 
+    if (score > 150){
+        user.src = ('./Img/blackwidow.png')
+    } 
+    if (score > 175){
+        user.src = ('./Img/captainamerica.png')
+    } 
+    if (score > 200){
+        user.src = ('./Img/captainmarvel.png')
+    } 
+    if (score > 225){
+        user.src = ('./Img/hulk.png')
+    } 
+    if (score > 250){
+        user.src = ('./Img/jordan.png')
+    } 
+    if (score > 275){
+        user.src = ('./Img/goat.png')
+    } 
 }
 
 
